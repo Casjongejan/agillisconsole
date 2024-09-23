@@ -29,7 +29,8 @@ namespace TesterConsoleApp
                 Console.WriteLine("6. Delete Person");
                 Console.WriteLine("7. Delete Pet");
                 Console.WriteLine("8. Generate Sample Data");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("9. Clear data");
+                Console.WriteLine("10. Exit");
 
                 var choice = Console.ReadLine();
                 switch (choice)
@@ -59,6 +60,9 @@ namespace TesterConsoleApp
                         GenerateSampleData(viewModel); // New option for generating sample data
                         break;
                     case "9":
+                        Cleardata(viewModel);
+                        break;
+                    case "10":
                         return; // Exit the program
                 }
             }
@@ -212,6 +216,10 @@ namespace TesterConsoleApp
 
             viewModel.GenerateSampleData(numberOfPeople, numberOfPets); // Call the ViewModel method to generate data
             Console.WriteLine("Sample data generated.");
+        }
+        private static void Cleardata(MainPageViewModel viewModel)
+        {
+            viewModel.Cleardata();
         }
     }
 }

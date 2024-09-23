@@ -133,6 +133,20 @@ namespace TesterConsoleApp
             _dbContext.Pets.Remove(pet);
             _dbContext.SaveChanges();
         }
+        public void Cleardata()
+        {
+            // Remove all pets first (because of the foreign key relationship)
+            _dbContext.Pets.RemoveRange(_dbContext.Pets);
+
+            // Remove all persons
+            _dbContext.Persons.RemoveRange(_dbContext.Persons);
+
+            // Save changes to the database
+            _dbContext.SaveChanges();
+
+            // Clear the local collections
+            People.Clear();
+        }
 
         public Pet GetPetById(int petId)
         {
